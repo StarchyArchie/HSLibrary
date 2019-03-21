@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardRequestActivity">
+
+    <EditText
+        android:id="@+id/Input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="384dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginRight="163dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="81dp"
+        android:hint="@string/CardHint"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="289dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginRight="148dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="47dp"
+        android:text="@string/searchButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Input" />
+</android.support.constraint.ConstraintLayout>

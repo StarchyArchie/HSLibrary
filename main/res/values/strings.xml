@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HearthAPI</string>
+    <string name="apiReturn">Default</string>
+    <string name="CardHint">Enter Card Name Here.</string>
+    <string name="searchButton">Search</string>
+    <string name="searchSet">Search By Set</string>
+    <string name="searchClass">Search By Class</string>
+    <string name="searchSingle">Search By Card Name</string>
+    <string name="searchRarity">Search By Rarity</string>
+    <string name="welcomeText">Welcome to the Hearthstone Simple Card Library right in your pocket!</string>
+</resources>
