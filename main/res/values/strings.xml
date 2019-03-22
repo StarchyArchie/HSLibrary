@@ -8,4 +8,7 @@
     <string name="searchSingle">Search By Card Name</string>
     <string name="searchRarity">Search By Rarity</string>
     <string name="welcomeText">Welcome to the Hearthstone Simple Card Library right in your pocket!</string>
+    <string name="action_settings">Background</string>
+    <string name="share">Share</string>
+    <string name="help">Help</string>
 </resources>

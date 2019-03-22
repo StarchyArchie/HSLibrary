@@ -8,7 +8,6 @@ import android.util.JsonReader;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +27,7 @@ public class CardRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_request);
+        final Intent imageIntent = new Intent(this,DisplayActivity.class);
         Intent searchIntent = getIntent();
         searchType = searchIntent.getStringExtra("Style");
         cardInput = findViewById(R.id.Input);
@@ -36,7 +36,7 @@ public class CardRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textConverter(cardInput.getText().toString());
-                getFromAPI(textInput);
+                getFromAPI(textInput,imageIntent);
             }
         });
     }
@@ -45,7 +45,7 @@ public class CardRequestActivity extends AppCompatActivity {
         return textInput;
     }
 
-        protected void getFromAPI(final String inputString){
+        protected void getFromAPI(final String inputString,final Intent intent){
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -58,7 +58,6 @@ public class CardRequestActivity extends AppCompatActivity {
                     }
                     try {
                         connection = (HttpURLConnection) cardSearch.openConnection();
-
                         connection.setRequestProperty("X-RapidAPI-Key", "40e38fed97msh80150cda84f7d31p1eec5ajsn84880a9477bd");
                         if (connection.getResponseCode() == 200) {
                             //success
@@ -88,7 +87,8 @@ public class CardRequestActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
+                    intent.putExtra("image",value);
+                    startActivity(intent);
                 }
             });
         }
