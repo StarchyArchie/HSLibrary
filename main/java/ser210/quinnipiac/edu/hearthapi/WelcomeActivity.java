@@ -35,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        searchSet.setOnClickListener(new View.OnClickListener() {
+        searchSet.setOnClickListener(new View.OnClickListener() {//The API changes results based on an ending, each option sends that ending to the CardRequest class.
             @Override
             public void onClick(View v) {
                 intent.putExtra("Style","cards/sets/");
@@ -74,7 +74,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     case R.id.action_settings:
                         RelativeLayout current = (RelativeLayout) findViewById(R.id.WelcomeLayout);
 
-                        if(baseColor==Color.WHITE){
+                        if(baseColor==Color.WHITE){//Checks background color then switches it.
                             current.setBackgroundColor(Color.GREEN);
                             baseColor=Color.GREEN;
                         }
@@ -96,7 +96,7 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
     public void helpMenu(Context context){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);//Displays a temporary window with help text in it.
         builder1.setMessage("This app offers four different search options for cards from the virtual card game Hearthstone. \n Choose to search directly by card name, the set it came in, it's rarity, or the character class it belongs to.\n This will grab the image of the card from the API and display it in the app.");
         builder1.setCancelable(true);
 

@@ -26,40 +26,11 @@ public class DisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display);
         System.out.println("DisplayActivity Launched.");
         Intent intent = getIntent();
-        imageURL = intent.getStringExtra("image");
+        imageURL = intent.getStringExtra("image");//URL for image from API
         imageView = findViewById(R.id.imageView);
-        //cardImage = LoadImageFromWebOperations(imageURL);
-        //cardBitmap = makeBitmap(imageURL);
-        //System.out.println("Card image Generator Called");
-        //imageView.setImageDrawable(cardImage);
-        //imageView.setImageBitmap(cardBitmap);
         new CardCreate(imageView).execute(imageURL);
     }
-
-    public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream input = (InputStream) new URL(url).getContent();
-            System.out.println("InputStream Created.");
-            Drawable display = Drawable.createFromStream(input, "src name");
-            System.out.println("Image Created!");
-            return display;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-    protected Bitmap makeBitmap(String url){
-        try{
-            URL imgurl = new URL(url);
-            System.out.println("URL Created. "+url);
-            Bitmap cardbmp = BitmapFactory.decodeStream(imgurl.openConnection().getInputStream());
-            System.out.println("Bitmap Created.");
-            return cardbmp;
-        }
-        catch(Exception e){
-            System.out.println("Bitmap Exception: "+e);
-            return null;
-        }
-    }
+    //Uses given String url to generate a bitmap to display in an AsyncTask.
     private class CardCreate extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 

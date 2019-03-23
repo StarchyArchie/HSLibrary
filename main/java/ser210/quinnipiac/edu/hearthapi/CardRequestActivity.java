@@ -29,9 +29,9 @@ public class CardRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_card_request);
         final Intent imageIntent = new Intent(this,DisplayActivity.class);
         Intent searchIntent = getIntent();
-        searchType = searchIntent.getStringExtra("Style");
-        cardInput = findViewById(R.id.Input);
-        search = findViewById(R.id.button);
+        searchType = searchIntent.getStringExtra("Style");//Grabs which category is being searched
+        cardInput = findViewById(R.id.Input);//Where user types search
+        search = findViewById(R.id.button);//Searches what is in the search box
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,24 +40,24 @@ public class CardRequestActivity extends AppCompatActivity {
             }
         });
     }
-    public String textConverter(String s){
+    public String textConverter(String s){//Converts user input into the relevant URL text
         textInput = s.replaceAll(" ","%20");
         return textInput;
     }
-
+    //Gets the image from the api and sends it to the display
         protected void getFromAPI(final String inputString,final Intent intent){
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
                     URL cardSearch = null;
                     HttpURLConnection connection = null;
-                    try {
+                    try {//Calls the API for the chosen type with the user input specification.
                         cardSearch = new URL("https://omgvamp-hearthstone-v1.p.rapidapi.com/"+searchType + inputString);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
                     try {
-                        connection = (HttpURLConnection) cardSearch.openConnection();
+                        connection = (HttpURLConnection) cardSearch.openConnection();//Connection to API
                         connection.setRequestProperty("X-RapidAPI-Key", "40e38fed97msh80150cda84f7d31p1eec5ajsn84880a9477bd");
                         if (connection.getResponseCode() == 200) {
                             //success
@@ -72,7 +72,7 @@ public class CardRequestActivity extends AppCompatActivity {
                         JsonReader jReader = new JsonReader(reader);
                         jReader.beginArray();
                         jReader.beginObject();
-                        while (jReader.hasNext()) {
+                        while (jReader.hasNext()) {//Singles out the image from the API
                             String key = jReader.nextName();
                             if (key.equals("img")) {
                                 value = jReader.nextString();
@@ -87,7 +87,7 @@ public class CardRequestActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    intent.putExtra("image",value);
+                    intent.putExtra("image",value);//Sends Image URL to Display activity
                     startActivity(intent);
                 }
             });
