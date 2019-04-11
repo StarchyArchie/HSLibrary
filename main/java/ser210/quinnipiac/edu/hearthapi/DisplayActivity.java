@@ -5,14 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class DisplayActivity extends AppCompatActivity {
 
@@ -29,6 +30,15 @@ public class DisplayActivity extends AppCompatActivity {
         imageURL = intent.getStringExtra("image");//URL for image from API
         imageView = findViewById(R.id.imageView);
         new CardCreate(imageView).execute(imageURL);
+        //Creating fragment
+        FragmentImageTitle fragment = new FragmentImageTitle();
+        //Passing data into fragment
+        //Displays URL of Image at the top of the screen.
+        fragment.setFragString(imageURL);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.FragmentCard, fragment);
+        ft.commit();
     }
     //Uses given String url to generate a bitmap to display in an AsyncTask.
     private class CardCreate extends AsyncTask<String, Void, Bitmap> {
