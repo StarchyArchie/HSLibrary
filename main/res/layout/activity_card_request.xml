@@ -25,6 +25,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <fragment
+        android:id="@+id/searchQueryFragment"
+        android:name="ser210.quinnipiac.edu.hearthapi.FragmentSearch"
+        android:layout_width="271dp"
+        android:layout_height="229dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="66dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="57dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

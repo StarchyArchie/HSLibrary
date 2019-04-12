@@ -2,6 +2,8 @@ package ser210.quinnipiac.edu.hearthapi;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.JsonReader;
@@ -16,21 +18,27 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class CardRequestActivity extends AppCompatActivity {
+public class CardRequestActivity extends AppCompatActivity implements FragmentSearch.searchListener{
 
     String value = "Value";
     String searchType = null;
     String textInput = null;
     EditText cardInput = null;
     Button search = null;
+    FragmentSearch fragment = new FragmentSearch();
+    Intent imageIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_request);
-        final Intent imageIntent = new Intent(this,DisplayActivity.class);
+        imageIntent = new Intent(this,DisplayActivity.class);
         Intent searchIntent = getIntent();
         searchType = searchIntent.getStringExtra("Style");//Grabs which category is being searched
         cardInput = findViewById(R.id.Input);//Where user types search
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.searchQueryFragment, fragment);
+        ft.commit();
         search = findViewById(R.id.button);//Searches what is in the search box
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +52,13 @@ public class CardRequestActivity extends AppCompatActivity {
         textInput = s.replaceAll(" ","%20");
         return textInput;
     }
+
+    public void searchMethod(View v){
+        String input = fragment.searchField.getText().toString();
+        textConverter(input);
+        getFromAPI(textInput,imageIntent);
+    }
+
     //Gets the image from the api and sends it to the display
         protected void getFromAPI(final String inputString,final Intent intent){
             AsyncTask.execute(new Runnable() {
@@ -92,4 +107,9 @@ public class CardRequestActivity extends AppCompatActivity {
                 }
             });
         }
+
+    @Override
+    public void setSearchTerm(String s) {
+        cardInput.setText(s);
     }
+}
