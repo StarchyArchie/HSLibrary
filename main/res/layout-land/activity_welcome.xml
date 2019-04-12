@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/WelcomeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/welcomeText"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/single"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome"
+        android:layout_alignLeft="@+id/welcome"
+        android:layout_alignStart="@+id/welcome"
+        android:layout_marginTop="10dp"
+        android:text="@string/searchSingle" />
+
+    <Button
+        android:id="@+id/set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome"
+        android:layout_alignRight="@+id/welcome"
+        android:layout_alignEnd="@+id/welcome"
+        android:layout_marginTop="10dp"
+        android:text="@string/searchSet" />
+
+    <Button
+        android:id="@+id/cardClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/single"
+        android:layout_alignStart="@+id/single"
+        android:layout_marginBottom="136dp"
+        android:text="@string/searchClass" />
+
+    <Button
+        android:id="@+id/rarity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/set"
+        android:layout_alignEnd="@+id/set"
+        android:layout_marginBottom="136dp"
+        android:text="@string/searchRarity" />
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+</RelativeLayout>

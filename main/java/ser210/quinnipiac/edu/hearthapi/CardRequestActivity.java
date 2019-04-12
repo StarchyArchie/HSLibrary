@@ -39,6 +39,7 @@ public class CardRequestActivity extends AppCompatActivity implements FragmentSe
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.searchQueryFragment, fragment);
         ft.commit();
+        //These are not removed because for some reason their removal causes the JSON reader to break.
         search = findViewById(R.id.button);//Searches what is in the search box
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +53,7 @@ public class CardRequestActivity extends AppCompatActivity implements FragmentSe
         textInput = s.replaceAll(" ","%20");
         return textInput;
     }
-
+    //Calls the search method through the fragment.
     public void searchMethod(View v){
         String input = fragment.searchField.getText().toString();
         textConverter(input);
